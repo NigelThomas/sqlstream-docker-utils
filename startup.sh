@@ -36,9 +36,8 @@ echo ...  execute project specific startup for buses
 $SQLSTREAM_HOME/demo/data/buses/start.sh
 
 echo ... point s-Dashboard to use the project dashboards directory
-cat /etc/default/s-dashboardd | sed -e "s:SDASHBOARD_DIR.*:SDASHBOARD_DIR=./dashboards:" > /tmp/s-dashboardd
-mv /tmp/s-dashboardd /etc/default/s-dashboardd
-cat /tmp/s-dashboardd | grep SDASHBOARD_DIR
+echo "SDASHBOARD_DIR=/home/sqlstream/${PROJECT_NAME}/dashboards >> /etc/default/s-dashboardd
+cat /etc/defaul/s-dashboardd | grep SDASHBOARD_DIR
 # 
 
 echo ... in case of multiple projects, generate a start script
@@ -47,7 +46,7 @@ generatePumpScripts
 echo ... and start pumps
 sqllineClient --run=startPumps.sql
 
-# start remaining required services
+echo start remaining required services
 service webagentd start
 service s-dashboardd start 
 
