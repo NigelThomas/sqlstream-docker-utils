@@ -46,8 +46,9 @@ function generatePumpScripts() {
         echo "... generating startPumps.sql and stopPumps.sql"
 
         # extract all schemas that have pumps, to generate a pump start/stop script ALTER PUMP "a".*,"b".*,"c".* START
+        # find the right version of listPumps.sql and .awk using which
 
-        sqllineClient --silent  --showHeader=false --run=listPumps.sql 2>/dev/null | awk -v action=START -f listPumps.awk > startPumps.sql
+        sqllineClient --silent  --showHeader=false --run=$(which listPumps.sql) 2>/dev/null | awk -v action=START -f $(which listPumps.awk) > startPumps.sql
         cat startPumps.sql | sed -e 's/START/STOP/g' > stopPumps.sql
 
     else

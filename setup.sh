@@ -1,11 +1,12 @@
 # setup.sh
-HERE=$(cd `dirname $0`; pwd -P)
+# Assume PATH is set so we don't need to refer to absolute paths
+# Assume cwd contains the project
+
 SLAB_PROJECT=$1
 
-echo Setting up project $SLAB_PROJECT in directory $HERE
+echo ... Setting up project $SLAB_PROJECT in directory `pwd`
 
-cd $HERE
-echo ... extract the SQL scripts needed from $HERE/${SLAB_PROJECT}.slab
+echo ... extract the SQL scripts needed from ${SLAB_PROJECT}.slab
 
 for script in main start stop
 do

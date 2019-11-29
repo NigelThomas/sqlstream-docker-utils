@@ -3,12 +3,13 @@
 # startup.sh
 #
 # extracts SQL and dashboards from one or more slab files and installs into s-Server
+# assume PATH is set to ensure we can find subsidiary scripts
+# assume cwd is set to the project directory
 
 HERE=$(cd `dirname $0`; pwd -P)
-. $HERE/serviceFunctions.sh
+. serviceFunctions.sh
 
-cd $HERE
-echo Loading StreamLab projects from $HERE
+echo Loading StreamLab projects from `pwd`
 
 # This test project depends on a local Postgres server
 service postgresql start
@@ -17,14 +18,13 @@ service postgresql start
 startsServer
 
 # what is in the cwd
-echo $pwd
 ls -l
 
 # unpack project and create the project schemas
 for slab in *.slab
 do
     echo ... ... unpacking $slab
-    $HERE/setup.sh $(basename $slab .slab)
+    setup.sh $(basename $slab .slab)
 done
 
 echo ...  execute project specific startup
@@ -40,7 +40,7 @@ echo ... in case of multiple projects, generate a start script
 generatePumpScripts
 
 echo ... and start pumps
-sqllineClient --run=${HERE}/startPumps.sql
+sqllineClient --run=startPumps.sql
 
 # start remaining required services
 service webagentd start
