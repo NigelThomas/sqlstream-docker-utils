@@ -37,7 +37,7 @@ $SQLSTREAM_HOME/demo/data/buses/start.sh
 
 echo ... point s-Dashboard to use the project dashboards directory
 echo "SDASHBOARD_DIR=/home/sqlstream/${PROJECT_NAME}/dashboards" >> /etc/default/s-dashboardd
-cat /etc/defaul/s-dashboardd | grep SDASHBOARD_DIR
+cat /etc/default/s-dashboardd | grep SDASHBOARD_DIR
 # 
 
 echo ... in case of multiple projects, generate a start script
