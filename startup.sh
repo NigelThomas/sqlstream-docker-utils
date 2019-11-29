@@ -6,7 +6,6 @@
 # assume PATH is set to ensure we can find subsidiary scripts
 # assume cwd is set to the project directory
 
-HERE=$(cd `dirname $0`; pwd -P)
 . serviceFunctions.sh
 
 echo Loading StreamLab projects from `pwd`
@@ -23,15 +22,21 @@ ls -l
 # unpack project and create the project schemas
 for slab in *.slab
 do
-    echo ... ... unpacking $slab
-    setup.sh $(basename $slab .slab)
+    if [ -e $slab ]
+    then
+        echo ... ... unpacking $slab
+        setup.sh $(basename $slab .slab)
+    else
+        echo no file $slab
+        break
+    fi
 done
 
-echo ...  execute project specific startup
+echo ...  execute project specific startup for buses
 $SQLSTREAM_HOME/demo/data/buses/start.sh
 
 echo ... point s-Dashboard to use the project dashboards directory
-cat /etc/default/s-dashboardd | sed -e "s:SDASHBOARD_DIR.*:SDASHBOARD_DIR=$HERE/dashboards:" > /tmp/s-dashboardd
+cat /etc/default/s-dashboardd | sed -e "s:SDASHBOARD_DIR.*:SDASHBOARD_DIR=./dashboards:" > /tmp/s-dashboardd
 mv /tmp/s-dashboardd /etc/default/s-dashboardd
 cat /tmp/s-dashboardd | grep SDASHBOARD_DIR
 # 

@@ -19,7 +19,7 @@ function waitForsServer() {
     while ! isServerReady
     do
         echo "...waiting for s-server"
-        sleep 1
+        sleep 2
     done
 
     sleep 10
