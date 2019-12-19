@@ -32,8 +32,12 @@ do
     fi
 done
 
-echo ...  execute project specific startup for buses
-$SQLSTREAM_HOME/demo/data/buses/start.sh
+prestartupcript=$(which pre-startup.sh)
+if [ -n "$prestartupscript" ]
+then
+    echo ...  call project specific startup pre-startup.sh : $prestartupscript
+    $prestartupscript
+fi
 
 echo ... point s-Dashboard to use the project dashboards directory
 echo "SDASHBOARD_DIR=/home/sqlstream/${PROJECT_NAME}/dashboards" >> /etc/default/s-dashboardd
