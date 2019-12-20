@@ -23,31 +23,4 @@ ls -l
 # load all slab files
 importSlabFiles
 
-prestartupcript=$(which pre-startup.sh)
-if [ -n "$prestartupscript" ]
-then
-    echo ...  call project specific startup pre-startup.sh : $prestartupscript
-    $prestartupscript
-fi
-
-# in case there are manually created dashboards
-
-echo ... point s-Dashboard to use the project dashboards directory
-echo "SDASHBOARD_DIR=/home/sqlstream/${PROJECT_NAME}/dashboards" >> /etc/default/s-dashboardd
-cat /etc/default/s-dashboardd | grep SDASHBOARD_DIR
-# 
-
-echo ... in case of multiple projects, generate a start script
-generatePumpScripts
-
-echo ... and start pumps
-sqllineClient --run=startPumps.sql
-
-echo start remaining required services
-service webagentd start
-service s-dashboardd start 
-
-# now the caller ENTRYPOINT should tail the s-Server trace file forever – so this entrypoint never finishes
-# and the trace file can be viewed using docker logs
-
 

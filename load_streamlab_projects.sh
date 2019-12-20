@@ -5,6 +5,12 @@
 
 cd /home/sqlstream
 
+. serviceFunctions.sh
+. streamlabFunctions.sh
+
+startsServer
+startStreamLab
+
 # the environment variables define which project gets loaded
 git clone ${GIT_ACCOUNT}/${GIT_PROJECT_NAME}.git
 
@@ -12,6 +18,7 @@ cd ${GIT_PROJECT_NAME}
 
 # the startup script orchestrates loading and running the project
 time PROJECT_NAME=GIT_PROJECT_NAME startup_streamlab.sh
+time PROJECT_NAME=GIT_PROJECT_NAME startup.sh
 echo "========= Ready ======="
 
 tail -F /var/log/sqlstream/Trace.log.0

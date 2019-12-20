@@ -34,6 +34,12 @@ function startsServer() {
 }
 
 
+startStreamLab() {
+    service webagentd start
+    service streamlabd start
+    echo ... StreamLab started
+}
+
 function generatePumpScripts() {
 
     if isServerReady
