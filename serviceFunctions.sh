@@ -27,6 +27,18 @@ function waitForsServer() {
 }
 
 function startsServer() {
+    # speed up startup for unlicensed server
+    touch $SQLSTREAM_HOME/entitlementId.txt
+
+    # place license file in SQLSTREAM_HOME if present
+    for f in *.lic
+    do
+        if [ -e $f ]
+        then
+            cp $f $SQLSTREAM_HOME
+        fi
+    done
+
     echo starting s-Server
     service s-serverd start
     waitForsServer
