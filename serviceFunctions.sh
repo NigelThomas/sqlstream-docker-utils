@@ -52,6 +52,16 @@ startStreamLab() {
     echo ... StreamLab started
 }
 
+# Run a pre-startup script if present
+preStartup() {
+    prestartupcript=$(which pre-startup.sh)
+    if [ -n "$prestartupscript" ]
+    then
+        echo ...  call project specific startup pre-startup.sh : $prestartupscript
+        $prestartupscript
+    fi
+}
+
 function generatePumpScripts() {
 
     if isServerReady

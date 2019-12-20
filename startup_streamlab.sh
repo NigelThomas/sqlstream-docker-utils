@@ -11,12 +11,6 @@
 
 echo Loading StreamLab projects from `pwd`
 
-# This test project depends on a local Postgres server
-service postgresql start
-
-# start s-Server to load the schema
-startsServer
-
 # what is in the cwd
 ls -l
 

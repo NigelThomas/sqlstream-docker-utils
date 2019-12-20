@@ -16,6 +16,9 @@ git clone ${GIT_ACCOUNT}/${GIT_PROJECT_NAME}.git
 
 cd ${GIT_PROJECT_NAME}
 
+# run prestartup script if present
+preStartup
+
 # the startup script orchestrates loading and running the project
 time PROJECT_NAME=GIT_PROJECT_NAME startup_streamlab.sh
 time PROJECT_NAME=GIT_PROJECT_NAME startup.sh
