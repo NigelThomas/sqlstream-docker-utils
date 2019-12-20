@@ -59,6 +59,10 @@ preStartup() {
     then
         echo ...  call project specific startup pre-startup.sh : $prestartupscript
         $prestartupscript
+    elif [ -e pre-startup.sh ]
+    then
+        echo ... call pre-startup.sh from `pwd`
+        ./pre-startup.sh
     else
         echo ... there is no pre-startup.sh script in `pwd`
     fi
