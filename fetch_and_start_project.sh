@@ -12,10 +12,11 @@ git clone --depth 1 ${GIT_ACCOUNT}/${GIT_PROJECT_NAME}.git
 
 startsServer
 
+cd ${GIT_PROJECT_NAME}
+
 # run prestartup script if present
 preStartup
 
-cd ${GIT_PROJECT_NAME}
 # the startup script orchestrates loading and running the project
 time PROJECT_NAME=GIT_PROJECT_NAME startup.sh
 echo "========= Ready ======="
