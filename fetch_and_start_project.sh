@@ -20,4 +20,7 @@ cd ${GIT_PROJECT_NAME}
 time PROJECT_NAME=GIT_PROJECT_NAME startup.sh
 echo "========= Ready ======="
 
+tail -F /var/log/sqlstream/Trace.log.0
+
+
 
