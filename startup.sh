@@ -35,14 +35,14 @@ echo ... and start pumps
 sqllineClient --run=startPumps.sql
 
 echo start remaining required services
-if [ -e /etc/init.d/webagentd ]
+if [ -e /etc/init.d/webagentd  -a -e $SQLSTREAM_HOME/../clienttools/WebAgent ]
 then
   service webagentd start
 else
   echo ... no webagentd to start
 fi
 
-if [ -e /etc/init.d/s-dashboardd ]
+if [ -e /etc/init.d/s-dashboardd -a -e $SQLSTREAM_HOME/../s-Dashboard ]
 then
   echo ... point s-Dashboard to use the project dashboards directory
   echo "SDASHBOARD_DIR=/home/sqlstream/${PROJECT_NAME}/dashboards" >> /etc/default/s-dashboardd
