@@ -4,7 +4,7 @@
         if (NR == 2){
 	    stmt = sprintf("alter pump %s.*",$1);
         } else {
-	    stmt = stmt + sprintf(", %s.*",$1);
+	    stmt = stmt sprintf(", %s.*",$1);
         }
     }
 } 
