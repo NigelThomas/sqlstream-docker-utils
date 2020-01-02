@@ -5,7 +5,14 @@
 
 cd /home/sqlstream
 
+echo PATH=$PATH
+echo sourcing $(which serviceFunctions.sh)
+
 . serviceFunctions.sh
+
+echo PATH=$PATH
+echo sourcing $(which streamlabFunctions.sh)
+
 . streamlabFunctions.sh
 
 startsServer
