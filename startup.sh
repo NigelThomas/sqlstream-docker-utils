@@ -6,6 +6,9 @@
 # assume PATH is set to ensure we can find subsidiary scripts
 # assume cwd is set to the project directory
 
+echo startup.sh PATH=$PATH
+. serviceFunctions.sh
+
 echo Loading StreamLab projects from `pwd`
 # what is in the cwd
 ls -l
@@ -15,7 +18,7 @@ for slab in *.slab
 do
     if [ -e $slab ]
     then
-        echo ... ... unpacking $slab
+        echo ... unpacking $slab
         setup.sh $(basename $slab .slab)
     else
         echo no file $slab
