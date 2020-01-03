@@ -13,7 +13,8 @@
 # importSlabFiles Import slab files into the local StreamLab / Rose server
 
 function importSlabFiles() {
-for f in *.slab
+
+for f in ${LOAD_SLAB_FILES:=*.slab}
 do
     if [ -e $f ]
     then

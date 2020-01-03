@@ -14,7 +14,7 @@ echo Loading StreamLab projects from `pwd`
 ls -l
 
 # unpack project and create the project schemas
-for slab in *.slab
+for slab in ${LOAD_SLAB_FILES:=*.slab}
 do
     if [ -e $slab ]
     then
