@@ -10,6 +10,10 @@ git clone --depth 1 ${GIT_ACCOUNT}/${GIT_PROJECT_NAME}.git
 
 . serviceFunctions.sh
 
+# move any license file(s) into s-Server directory
+find ${GIT_PROJECT_NAME} -name "*.lic" -type f -exec cp {} $SQLSTREAM_HOME \;
+
+
 startsServer
 
 cd ${GIT_PROJECT_NAME}
