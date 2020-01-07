@@ -39,6 +39,13 @@ function startsServer() {
         fi
     done
 
+    if [ -n "$SQLSTREAM_HEAP_MEMORY" ]
+    then
+        # modify the default heap memory settings
+        echo "... increase heap memory to $SQLSTREAM_HEAP_MEMORY"
+        sed -i -e "s/2048m/$SQLSTREAM_HEAP_MEMORY/" $SQLSTREAM_HOME/bin/defineAspenRuntime.sh
+    fi
+
     echo starting s-Server
     service s-serverd start
     waitForsServer
