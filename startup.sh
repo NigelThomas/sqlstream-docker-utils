@@ -26,6 +26,11 @@ do
     fi
 done
 
+if [ -e hadoop/krb5.conf ]
+then
+    echo ... installing krb5.conf
+    cp hadoop/krb5.conf /etc
+fi
 # 
 
 echo ... in case of multiple projects, generate a start script

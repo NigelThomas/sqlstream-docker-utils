@@ -17,6 +17,7 @@ echo sourcing $(which streamlabFunctions.sh)
 
 # the environment variables define which project gets loaded
 git clone ${GIT_ACCOUNT}/${GIT_PROJECT_NAME}.git
+chown -R sqlstream:sqlstream ${GIT_PROJECT_NAME}
 
 cd ${GIT_PROJECT_NAME}
 
