@@ -18,13 +18,12 @@ echo sourcing $(which streamlabFunctions.sh)
 # the environment variables define which project gets loaded
 git clone ${GIT_ACCOUNT}/${GIT_PROJECT_NAME}.git
 chown -R sqlstream:sqlstream ${GIT_PROJECT_NAME}
-find ${GIT_PROJECT_NAME} -type f -name "*.keytab" -exec chmod +600 {} \;
-
+find ${GIT_PROJECT_NAME} -type f -name "*.keytab" -exec echo setting permissions on {} \; -exec chmod +600 {} \;
 
 cd ${GIT_PROJECT_NAME}
 
 # move any license file(s) into s-Server directory
-find . -name "*.lic" -type f -exec cp {} $SQLSTREAM_HOME \;
+find . -name "*.lic" -type f -exec echo copying {} to s-Server \; -exec cp {} $SQLSTREAM_HOME \;
 
 startsServer
 startStreamLab
