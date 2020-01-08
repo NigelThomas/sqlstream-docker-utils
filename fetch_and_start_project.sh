@@ -9,7 +9,7 @@ cd /home/sqlstream
 git clone --depth 1 ${GIT_ACCOUNT}/${GIT_PROJECT_NAME}.git
 echo ... chown -R sqlstream:sqlstream ${GIT_PROJECT_NAME}
 chown -R sqlstream:sqlstream ${GIT_PROJECT_NAME}
-su sqlstream  -m -c "find /home/sqlstream/${GIT_PROJECT_NAME} -type f -name '*.keytab' -exec chmod -v +0600 {} \;"
+su sqlstream  -m -c "find /home/sqlstream/${GIT_PROJECT_NAME} -type f -name '*.keytab' -exec chmod -v 0600 {} \;"
 
 
 . serviceFunctions.sh
