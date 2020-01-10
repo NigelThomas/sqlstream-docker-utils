@@ -14,6 +14,14 @@ function isServerReady() {
 }
 
 function waitForsServer() {
+    
+    while true
+    do
+        echo ... wait until port 5570 responds
+        nc -z localhost 5570
+        sleep 2
+    done
+
     #echo WAIT-S-SERVER
     # wait until server is ready
     while ! isServerReady
@@ -22,7 +30,8 @@ function waitForsServer() {
         sleep 2
     done
 
-    sleep 10
+    echo ...sleep for 2 minutes to allow HDFS initialization
+    sleep 120
 
 }
 

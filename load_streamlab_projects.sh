@@ -28,10 +28,6 @@ find . -name "*.lic" -type f -exec cp -v {} $SQLSTREAM_HOME \;
 
 startsServer
 
-#workaround HDFS / Kerberos issue
-service s-serverd stop
-startsServer
-
 startStreamLab
 
 # run prestartup script if present
