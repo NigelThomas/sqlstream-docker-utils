@@ -26,9 +26,9 @@ cd ${GIT_PROJECT_NAME}
 # move any license file(s) into s-Server directory
 find . -name "*.lic" -type f -exec cp -v {} $SQLSTREAM_HOME \;
 
-#startsServer
+startsServer
 
-#startStreamLab
+startStreamLab
 
 # run prestartup script if present
 preStartup
