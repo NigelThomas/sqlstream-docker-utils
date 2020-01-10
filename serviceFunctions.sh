@@ -29,8 +29,13 @@ function waitForsServer() {
         sleep 2
     done
 
-    echo ...sleep for 2 minutes to allow HDFS initialization
-    sleep 120
+    : ${SQLSTREAM_SLEEP_SECS:=0}
+
+    if [ ${SQLSTREAM_SLEEP_SECS} -gt 0 ]
+    then
+        echo ...sleep for $SQLSTREAM_SLEEP_SECS to allow HDFS initialization
+        sleep $SQLSTREAM_SLEEP_SECS
+    fi
 
 }
 
