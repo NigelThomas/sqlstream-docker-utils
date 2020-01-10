@@ -15,14 +15,13 @@ function isServerReady() {
 
 function waitForsServer() {
     
-    while true
-    do
-        echo ... wait until port 5570 responds
-        nc -z localhost 5570
-        sleep 2
-    done
+#    while true
+#    do
+#        echo ... wait until port 5570 responds
+#        nc -z localhost 5570
+#        sleep 2
+#    done
 
-    #echo WAIT-S-SERVER
     # wait until server is ready
     while ! isServerReady
     do
