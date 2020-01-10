@@ -10,5 +10,7 @@
 } 
 
 END {
-    printf "%s %s;\n",stmt, action;
+    if (NR > 1) {
+        printf "%s %s;\n",stmt, action;
+    }
 }
