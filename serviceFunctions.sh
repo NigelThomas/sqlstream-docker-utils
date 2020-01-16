@@ -108,13 +108,23 @@ function copyLicense() {
 
 function linkJndiDirectory () {
     # is there a jndi directory mounted?
+    JNDI_DIR=
+
     if [ -d /home/sqlstream/jndi ]
     then
         # user-specific jndi directory mounted
-        ln -v -s /home/sqlstream/jndi $SQLSTREAM_HOME/plugin/jndi
+        JNDI_DIR=/home/sqlstream/jndi
     elif [ -d ./jndi ]
     then
         # use the project's presupplied jndi directory
-        ln -v -s `pwd`/jndi $SQLSTREAM_HOME/plugin/jndi
+        JNDI_DIR=`pwd`/jndi
     fi
+
+    if [ -n "$JNDI_DIR" ]
+        echo "... linking jndi property files if any"
+        cd $SQLSTREAM_HOME/plugin/jndi
+        find $JNDI_DIR -type f -name *.properties -exec ln -v -s {} . \;
+        cd -
+    fi
+        ln -v -s /home/sqlstream/jndi $SQLSTREAM_HOME/plugin/jndi
 }
