@@ -43,15 +43,6 @@ function startsServer() {
     # speed up startup for unlicensed server
     touch $SQLSTREAM_HOME/catalog/entitlementId.txt
 
-    # place license file in SQLSTREAM_HOME if present
-    for f in *.lic
-    do
-        if [ -e $f ]
-        then
-            cp $f $SQLSTREAM_HOME
-        fi
-    done
-
     if [ -n "$SQLSTREAM_HEAP_MEMORY" ]
     then
         # modify the default heap memory settings
@@ -110,3 +101,20 @@ function generatePumpScripts() {
     fi
 }
 
+function copyLicense() {
+    # move any license file(s) into s-Server directory
+    find . -name "*.lic" -type f -exec cp -v {} $SQLSTREAM_HOME \;
+}
+
+function linkJndiDirectory () {
+    # is there a jndi directory mounted?
+    if [ -d /home/sqlstream/jndi ]
+    then
+        # user-specific jndi directory mounted
+        ln -v -s /home/sqlstream/jndi $SQLSTREAM_HOME/plugin/jndi
+    elif [ -d ./jndi ]
+    then
+        # use the project's presupplied jndi directory
+        ln -v -s `pwd`/jndi $SQLSTREAM_HOME/plugin/jndi
+    fi
+}

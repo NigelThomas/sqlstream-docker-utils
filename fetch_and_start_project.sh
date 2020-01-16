@@ -16,8 +16,9 @@ su sqlstream  -m -c "find /home/sqlstream/${GIT_PROJECT_NAME} -type f -name '*.k
 
 cd ${GIT_PROJECT_NAME}
 
-# move any license file(s) into s-Server directory
-find . -name "*.lic" -type f -exec cp -v {} $SQLSTREAM_HOME \;
+copyLicense
+
+linkJndiDirectory
 
 startsServer
 
