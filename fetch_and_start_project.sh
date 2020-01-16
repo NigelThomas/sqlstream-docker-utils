@@ -18,7 +18,7 @@ cd ${GIT_PROJECT_NAME}
 
 copyLicense
 
-linkJndiDirectory
+#linkJndiDirectory
 
 startsServer
 
