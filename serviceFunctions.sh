@@ -121,10 +121,10 @@ function linkJndiDirectory () {
     fi
 
     if [ -n "$JNDI_DIR" ]
+    then
         echo "... linking jndi property files if any"
         cd $SQLSTREAM_HOME/plugin/jndi
         find $JNDI_DIR -type f -name *.properties -exec ln -v -s {} . \;
         cd -
     fi
-        ln -v -s /home/sqlstream/jndi $SQLSTREAM_HOME/plugin/jndi
 }
