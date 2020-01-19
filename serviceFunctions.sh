@@ -144,7 +144,9 @@ function getGitProject()
 
         # TODO is there a way to do this in one step without getting full history?
         git clone ${GIT_ACCOUNT}/${GIT_PROJECT_NAME}.git
+        cd ${GIT_PROJECT_NAME}
         git checkout $GIT_PROJECT_HASH
+        cd -
     fi
 
     echo ... chown -R sqlstream:sqlstream ${GIT_PROJECT_NAME}
