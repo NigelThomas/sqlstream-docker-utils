@@ -128,3 +128,27 @@ function linkJndiDirectory () {
         cd -
     fi
 }
+
+
+
+function getGitProject()
+{
+    # the environment variables define which version of which project gets loaded
+
+    if [ -z "$GIT_PROJECT_HASH" -o "$GIT_PROJECT_HASH" = "HEAD ]
+    then
+        echo ... getting latest for $GIT_PROJECT_NAME
+        git clone --depth 1 ${GIT_ACCOUNT}/${GIT_PROJECT_NAME}.git
+    else
+        echo ... getting tag / hash $GIT_PROJECT_HASH for $GIT_PROJECT_NAME
+
+        # TODO is there a way to do this in one step without getting full history?
+        git clone ${GIT_ACCOUNT}/${GIT_PROJECT_NAME}.git
+        git checkout $GIT_PROJECT_HASH
+    fi
+
+    echo ... chown -R sqlstream:sqlstream ${GIT_PROJECT_NAME}
+    chown -R sqlstream:sqlstream ${GIT_PROJECT_NAME}
+    su sqlstream  -m -c "find /home/sqlstream/${GIT_PROJECT_NAME} -type f -name '*.keytab' -exec chmod -v 0600 {} \;"
+}
+

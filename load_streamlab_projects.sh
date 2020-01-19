@@ -15,11 +15,7 @@ echo sourcing $(which streamlabFunctions.sh)
 
 . streamlabFunctions.sh
 
-# the environment variables define which project gets loaded
-git clone ${GIT_ACCOUNT}/${GIT_PROJECT_NAME}.git
-echo ... chown -R sqlstream:sqlstream ${GIT_PROJECT_NAME}
-chown -R sqlstream:sqlstream ${GIT_PROJECT_NAME}
-su sqlstream  -m -c "find /home/sqlstream/${GIT_PROJECT_NAME} -type f -name '*.keytab' -exec chmod -v 0600 {} \;"
+getGitProject
 
 cd ${GIT_PROJECT_NAME}
 

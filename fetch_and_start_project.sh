@@ -5,14 +5,12 @@
 
 cd /home/sqlstream
 
-# the environment variables define which project gets loaded
-git clone --depth 1 ${GIT_ACCOUNT}/${GIT_PROJECT_NAME}.git
-echo ... chown -R sqlstream:sqlstream ${GIT_PROJECT_NAME}
-chown -R sqlstream:sqlstream ${GIT_PROJECT_NAME}
-su sqlstream  -m -c "find /home/sqlstream/${GIT_PROJECT_NAME} -type f -name '*.keytab' -exec chmod -v 0600 {} \;"
-
+echo PATH=$PATH
+echo sourcing $(which serviceFunctions.sh)
 
 . serviceFunctions.sh
+
+getGitProject
 
 cd ${GIT_PROJECT_NAME}
 
