@@ -9,13 +9,6 @@
 echo startup.sh PATH=$PATH
 . serviceFunctions.sh
 
-if [ -e hadoop/krb5.conf ]
-then
-    echo ... installing krb5.conf
-    cp hadoop/krb5.conf /etc
-fi
-# 
-
 echo Loading StreamLab projects from `pwd`
 # what is in the cwd
 ls -l

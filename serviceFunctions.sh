@@ -63,7 +63,27 @@ startStreamLab() {
     echo ... StreamLab started
 }
 
+# Run a pre-server script if present
+# This is executed BEFORE s-Server is started
+
+preServer() {
+    preservercript=$(which pre-startup.sh)
+    if [ -n "$preserverscript" ]
+    then
+        echo ...  call project specific startup pre-startup.sh : $preserverscript
+        $preserverscript
+    elif [ -e pre-server.sh ]
+    then
+        echo ... call pre-server.sh from `pwd`
+        ./pre-server.sh
+    else
+        echo ... there is no pre-server.sh script in `pwd`
+    fi
+}
+
 # Run a pre-startup script if present
+# This is executed AFTER s-Server is started, but before generic startup.sh
+
 preStartup() {
     prestartupcript=$(which pre-startup.sh)
     if [ -n "$prestartupscript" ]

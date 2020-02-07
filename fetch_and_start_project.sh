@@ -18,9 +18,12 @@ copyLicense
 
 linkJndiDirectory
 
+# run pre-server script if present
+preServer
+
 startsServer
 
-# run prestartup script if present
+# run pre-startup script if present
 preStartup
 
 # the startup script orchestrates loading and running the project

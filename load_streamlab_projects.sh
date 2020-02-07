@@ -23,11 +23,14 @@ copyLicense
 
 linkJndiDirectory
 
+# run pre-server script if present (things that need to happen before s-Server is up)
+preServer
+
 startsServer
 
 startStreamLab
 
-# run prestartup script if present
+# run pre-startup script if present (things that need s-Server to be up, and need to happen before the remainder of startup)
 preStartup
 
 # the startup script orchestrates loading and running the project
