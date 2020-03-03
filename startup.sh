@@ -30,8 +30,13 @@ done
 echo ... in case of multiple projects, generate a start script
 generatePumpScripts
 
-echo ... and start pumps
-sqllineClient --run=startPumps.sql
+if [ -z "SQLSTREAM_DISABLE_PUMPS" ]
+then
+    echo ... and start pumps 
+    sqllineClient --run=startPumps.sql
+else
+    echo ... WARNING pumps are disabled, SQLSTREAM_DISABLE_PUMPS=$SQLSTREAM_DISABLE_PUMPS
+fi
 
 echo start remaining required services
 if [ -e /etc/init.d/webagentd  -a -e $SQLSTREAM_HOME/../clienttools/WebAgent ]
