@@ -30,7 +30,7 @@ done
 echo ... in case of multiple projects, generate a start script
 generatePumpScripts
 
-if [ -z "SQLSTREAM_DISABLE_PUMPS" ]
+if [ -z "$SQLSTREAM_DISABLE_PUMPS" ]
 then
     echo ... and start pumps 
     sqllineClient --run=startPumps.sql
