@@ -8,21 +8,14 @@
 
 echo startup_streamlab.sh PATH=$PATH
 
-. serviceFunctions.sh
-
 startStreamLab
 
 echo Loading StreamLab projects from `pwd`
 
-# what is in the cwd
-ls -l
-
-# load all slab files
-
-echo loading slab files $LOAD_SLAB_FILES from `pwd`
-
-for f in ${LOAD_SLAB_FILES:=*.slab}
+for f in ${LOAD_SLAB_FILES}
 do
+    echo loading slab files $f from `pwd`
+
     if [ -e $f ]
     then
         echo
