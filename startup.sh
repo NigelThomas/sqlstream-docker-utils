@@ -9,9 +9,7 @@
 echo startup.sh PATH=$PATH
 . serviceFunctions.sh
 
-echo Loading StreamLab projects from `pwd`
-# what is in the cwd
-ls -l
+echo Loading StreamLab schemas from `pwd`
 
 # unpack project and create the project schemas
 for slab in ${LOAD_SLAB_FILES:=*.slab}

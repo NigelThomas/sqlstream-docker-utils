@@ -10,11 +10,6 @@ echo sourcing $(which serviceFunctions.sh)
 
 . serviceFunctions.sh
 
-echo PATH=$PATH
-echo sourcing $(which streamlabFunctions.sh)
-
-. streamlabFunctions.sh
-
 getGitProject
 
 cd ${GIT_PROJECT_NAME}
@@ -34,7 +29,10 @@ startStreamLab
 preStartup
 
 # the startup script orchestrates loading and running the project
+
+echo launching startup_streamlab
 . startup_streamlab.sh
+
 time PROJECT_NAME=GIT_PROJECT_NAME PATH=$PATH startup.sh
 echo "========= Ready ======="
 
