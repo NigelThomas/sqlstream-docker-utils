@@ -19,7 +19,7 @@ do
     if [ -e $f ]
     then
         echo
-        echo posting $f
+        echo posting $f to StreamLab
 
         # TODO check if project already exists in repository, fail if so
 
@@ -27,7 +27,7 @@ do
         python /home/sqlstream/sqlstream-docker-utils/slabLoader.py $f
 
         # call the API
-        curl -H "Content-Type: application/json" -d@/tmp/slab.json http://localhost:5585/_project_import/user
+        curl -v -H "Content-Type: application/json" -d@/tmp/slab.json http://localhost:5585/_project_import/user
 
         # TODO check response
 
