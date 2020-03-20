@@ -26,7 +26,7 @@ with open(filename) as slab_file:
         print '... '+sname
 
         with open(basename+'.'+sname+'.sql', 'w') as fp:
-            fp.write(script);
+            fp.write(script.encode('utf-8'));
 
 
 
