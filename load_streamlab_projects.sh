@@ -34,7 +34,7 @@ startStreamLab
 preStartup
 
 # the startup script orchestrates loading and running the project
-time PROJECT_NAME=GIT_PROJECT_NAME PATH=$PATH startup_streamlab.sh
+. startup_streamlab.sh
 time PROJECT_NAME=GIT_PROJECT_NAME PATH=$PATH startup.sh
 echo "========= Ready ======="
 
