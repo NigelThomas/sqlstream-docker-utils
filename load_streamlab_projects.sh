@@ -34,8 +34,8 @@ startStreamLab
 preStartup
 
 # the startup script orchestrates loading and running the project
-time PROJECT_NAME=GIT_PROJECT_NAME startup_streamlab.sh
-time PROJECT_NAME=GIT_PROJECT_NAME startup.sh
+time PROJECT_NAME=GIT_PROJECT_NAME PATH=$PATH startup_streamlab.sh
+time PROJECT_NAME=GIT_PROJECT_NAME PATH=$PATH startup.sh
 echo "========= Ready ======="
 
 tail -F /var/log/sqlstream/Trace.log.0
