@@ -8,6 +8,6 @@ sqllineClient --run=/home/sqlstream-docker-utils/setup_monitor_streams.sql
 
 # include the monitor.slab file in the current directory
 
-ln -s /home/sqlstream-docker-utils/monitor.slab
+ln -s /home/sqlstream/sqlstream-docker-utils/monitor.slab
 
 
