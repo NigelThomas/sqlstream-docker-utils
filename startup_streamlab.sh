@@ -17,6 +17,7 @@ echo Loading StreamLab projects from `pwd`
 ls -l
 
 # load all slab files
+echo call importSlabFiles
 importSlabFiles
 
 
