@@ -9,7 +9,7 @@ echo ... Setting up project $SLAB_PROJECT in directory `pwd`
 echo ... extract the SQL scripts needed from ${SLAB_PROJECT}.slab
 
 # generate the scripts
-python slabExtractScript.py ${SLAB_PROJECT} main start stop
+python /home/sqlstream/slstream-docker-utils/slabExtractScript.py ${SLAB_PROJECT} main start stop
 
 # TODO IS THIS STILL NEEDED
 echo ... adjusting ${SLAB_PROJECT}.main.sql
@@ -23,5 +23,5 @@ mv /tmp/${SLAB_PROJECT}.main.sql  ./${SLAB_PROJECT}.main.sql
 
 sqllineClient --run=${SLAB_PROJECT}.main.sql
 
-python slabExtractDashboards.py ${SLAB_PROJECT}
+python /home/sqlstream/sqlstream-docker-utils/slabExtractDashboards.py ${SLAB_PROJECT}
 

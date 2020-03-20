@@ -24,7 +24,7 @@ do
         # TODO check if project already exists in repository, fail if so
 
         # convert the SLAB file into a submission
-        python slabLoader.py $f
+        python /home/sqlstream/sqlstream-docker-utils/slabLoader.py $f
 
         # call the API
         curl -H "Content-Type: application/json" -d@/tmp/slab.json http://localhost:5585/_project_import/user
