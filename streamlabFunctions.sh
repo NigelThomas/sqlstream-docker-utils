@@ -14,6 +14,8 @@
 
 function importSlabFiles() {
 
+echo loading slab files $LOAD_SLAB_FILES from `pwd`
+
 for f in ${LOAD_SLAB_FILES:=*.slab}
 do
     if [ -e $f ]
