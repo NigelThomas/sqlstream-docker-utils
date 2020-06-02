@@ -10,13 +10,7 @@ echo sourcing $(which serviceFunctions.sh)
 
 . serviceFunctions.sh
 
-if [ -d ${GIT_PROJECT_NAME} ]
-then
-    # if the project has been mounted, use that
-    echo ${GIT_PROJECT_NAME} already mounted
-else
-    getGitProject
-fi
+getGitProject
 
 cd ${GIT_PROJECT_NAME}
 

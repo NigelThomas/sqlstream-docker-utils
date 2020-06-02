@@ -155,7 +155,10 @@ function getGitProject()
 {
     # the environment variables define which version of which project gets loaded
 
-    if [ -z "$GIT_PROJECT_HASH" -o "$GIT_PROJECT_HASH" = "HEAD" ]
+    if [ -d ${GIT_PROJECT_NAME} ]
+    then
+        echo "Project ${GIT_PROJECT_NAME} already present"
+    elif [ -z "$GIT_PROJECT_HASH" -o "$GIT_PROJECT_HASH" = "HEAD" ]
     then
         echo ... getting latest for $GIT_PROJECT_NAME
         git clone --depth 1 ${GIT_ACCOUNT}/${GIT_PROJECT_NAME}.git
