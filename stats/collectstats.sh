@@ -11,6 +11,7 @@ LOG=/var/log/sqlstream
 nohup sqllineClient --run=$HERE/tserver.sql 2>&1 >$LOG/telem.server.${starttime}.log &
 nohup sqllineClient --run=$HERE/tgraph.sql 2>&1 >$LOG/telem.graph.${starttime}.log &
 nohup sqllineClient --run=$HERE/tnode.sql 2>&1 >$LOG/telem.node.${starttime}.log &
+nohup sqllineClient --run=$HERE/tnodestream.sql 2>&1 >$LOG/telem.stream.${starttime}.log &
 
 nohup vmstat -wt -Sm 60 >$LOG/vmstats.${starttime}.log &
 

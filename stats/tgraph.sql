@@ -1,3 +1,3 @@
 select stream measured_at,graph_id,sched_state,num_live_nodes,total_execution_time,net_input_rows,net_output_rows,net_memory_bytes,max_memory_bytes,name_in_query_plan
-from stream(sys_boot.mgmt.getStreamGraphForever(60))
+from stream(sys_boot.mgmt.getStreamGraphInfoForever(60))
 ;
