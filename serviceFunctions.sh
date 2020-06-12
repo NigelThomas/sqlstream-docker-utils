@@ -172,8 +172,8 @@ function getGitProject()
         cd -
     fi
 
-    echo ... chown -R sqlstream:sqlstream ${GIT_PROJECT_NAME}
-    chown -R sqlstream:sqlstream ${GIT_PROJECT_NAME}
+    #echo ... chown -R sqlstream:sqlstream ${GIT_PROJECT_NAME}
+    #chown -R sqlstream:sqlstream ${GIT_PROJECT_NAME}
     su sqlstream  -m -c "find /home/sqlstream/${GIT_PROJECT_NAME} -type f -name '*.keytab' -exec chmod -v 0600 {} \;"
 }
 
